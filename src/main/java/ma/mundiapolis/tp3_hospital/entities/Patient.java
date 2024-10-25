@@ -14,7 +14,7 @@ public class Patient {
     private String name;
     @Temporal(TemporalType.DATE)
     private Date birthDate;
-    private boolean malade;
+    private boolean sick;
     private int score;
 
 }
