@@ -1,3 +1,4 @@
+// File: src/main/java/ma/mundiapolis/tp3_gere_patient/entities/Patient.java
 package ma.mundiapolis.tp3_gere_patient.web;
 
 import ma.mundiapolis.tp3_gere_patient.entities.Patient;
@@ -6,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -37,20 +39,34 @@ public class PatientController {
         return patientService.getPatientById(id);
     }
     @PutMapping("/{id}")
-    public Patient updatePatient(@PathVariable Long id, @RequestBody Patient patientDetails){
-        Optional<Patient> patient = patientService.getPatientById(id);
-        if (patient.isPresent()) {
-            Patient existingPatient = patient.get();
-            existingPatient.setName(patientDetails.getName());
-            existingPatient.setEmail(patientDetails.getEmail());
-            return patientService.savePatient(existingPatient);
-        } else {
-            throw new RuntimeException("Patient not found");
-        }
+    public Patient updatePatient(@PathVariable Long id, @RequestBody Patient patientDetails) {
+        return patientService.getPatientById(id)
+                .map(existingPatient -> {
+                    existingPatient.setName(patientDetails.getName());
+                    existingPatient.setEmail(patientDetails.getEmail());
+                    existingPatient.setBirthDate(patientDetails.getBirthDate());
+                    existingPatient.setSick(patientDetails.isSick());
+                    existingPatient.setScore(patientDetails.getScore());
+                    return patientService.savePatient(existingPatient);
+                })
+                .orElseThrow(() -> new RuntimeException("Patient not found"));
     }
     @GetMapping("/delete")
     public String deletePatient(Long id , String word, int page){
-        patientService.deletePatient(id, word, page);
+        patientService.deletePatient(id);
         return "redirect:/patients?page="+page+"&word="+word;
+    }
+    @GetMapping("/patients/add")
+    public String showAddPatientForm(Model model){
+        model.addAttribute("patient", new Patient());
+        return "add_patient";
+    }
+    @PostMapping("/patients/add")
+    public String addPatient(@Valid @ModelAttribute Patient patient, BindingResult result){
+        if (result.hasErrors()){
+            return "add_patient";
+        }
+        patientService.savePatient(patient);
+        return "redirect:/patients";
     }
 }
