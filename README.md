@@ -64,8 +64,10 @@ The application includes the following functionalities:
 ## Screenshots
 
 1. **List of Patients**: Displays all patient records with pagination and search functionality.
-2. **Add/Edit Patient**: A form for adding or editing patient information, with validation for required fields.
-
+2. ![List of Patients](Image/List_Of_Patients.png)
+3. **Add/Edit Patient**: A form for adding or editing patient information, with validation for required fields.
+4. ![Add Patient](Image/Add_Patient.png)
+5. ![Edit Patient](Image/Edit_Patient.png)
 ## Additional Resources
 
 - [Spring MVC Documentation](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html)
