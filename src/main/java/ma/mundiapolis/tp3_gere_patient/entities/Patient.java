@@ -6,6 +6,7 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -22,14 +23,19 @@ public class Patient {
 
     @Temporal(TemporalType.DATE)
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
 
-    @Email(message = "L'adresse e-mail doit être bien formatée")
+    @Email(message = "The email address must be well formatted")
     private String email;
 
     private boolean sick;
 
     @Min(0)
     private int score;
+
+    @NotNull
+    private String gender;
+
 
 }

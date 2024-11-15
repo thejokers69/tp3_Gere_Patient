@@ -19,6 +19,7 @@ public class PatientService {
     }
 
     public Patient savePatient(Patient patient) {
+        System.out.println("Patient saved : " + patient);
         return patientRepository.save(patient);
     }
 
@@ -29,7 +30,6 @@ public class PatientService {
     public Optional<Patient> getPatientById(Long id) {
         return patientRepository.findById(id);
     }
-
     public void deletePatient(Long id) {
         patientRepository.deleteById(id);
     }
