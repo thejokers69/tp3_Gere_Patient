@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
 public interface PatientRepository extends JpaRepository<Patient, Long> {
-    //Page<Patient> findByNameContains(String word, SpringDataWebProperties.Pageable pageable);
     Page<Patient> findByNameContains(String word, Pageable pageable);
 }

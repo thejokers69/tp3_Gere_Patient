@@ -1,6 +1,7 @@
 // File: src/main/java/ma/mundiapolis/tp3_gere_patient/entities/Patient.java
 package ma.mundiapolis.tp3_gere_patient.web;
 
+import jakarta.validation.Valid;
 import ma.mundiapolis.tp3_gere_patient.entities.Patient;
 import ma.mundiapolis.tp3_gere_patient.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
