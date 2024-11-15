@@ -1,4 +1,3 @@
-<!-- File: src/main/resources/templates/patients.html -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -8,7 +7,9 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
 <div class="container mx-auto p-4">
-    <form method="get" th:action="@{patients}" >
+
+    <!-- Formulaire de recherche -->
+    <form method="get" th:action="@{patients}">
         <label class="block w-full text-gray-700 font-semibold mb-2">Search for a patient</label>
         <input
                 type="text"
@@ -25,7 +26,17 @@
         </button>
     </form>
 
+    <!-- Bouton Add Patient -->
+    <div class="flex justify-end mb-4">
+        <a href="/patients/add"
+           class="bg-green-500 text-white font-semibold px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">
+            Add Patient
+        </a>
+    </div>
+
     <h1 class="text-3xl font-bold mb-4">List of Patients</h1>
+
+    <!-- Tableau des patients -->
     <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
         <thead class="bg-gray-200">
         <tr>
@@ -54,6 +65,8 @@
         </tr>
         </tbody>
     </table>
+
+    <!-- Pagination -->
     <ul class="flex justify-center space-x-2 mt-4">
         <li th:each="page, status : ${pages}" class="page-item cursor-pointer">
             <a th:classappend="${status.index == currentPage ? 'bg-gray-800 text-white' : 'text-gray-700 hover:bg-gray-800 hover:text-white'}"
@@ -63,9 +76,6 @@
             </a>
         </li>
     </ul>
-
-
-
 
 </div>
 </body>

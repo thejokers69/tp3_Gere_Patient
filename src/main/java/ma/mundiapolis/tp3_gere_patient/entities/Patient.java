@@ -10,13 +10,12 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Entity
-@Data @NoArgsConstructor
-@AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor
 public class Patient {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotNull
     @Size(min = 2, max = 50)
     private String name;
@@ -24,9 +23,12 @@ public class Patient {
     @Temporal(TemporalType.DATE)
     @NotNull
     private Date birthDate;
-    @Email
+
+    @Email(message = "L'adresse e-mail doit être bien formatée")
     private String email;
+
     private boolean sick;
+
     @Min(0)
     private int score;
 

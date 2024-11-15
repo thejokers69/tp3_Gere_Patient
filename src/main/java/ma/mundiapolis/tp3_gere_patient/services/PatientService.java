@@ -1,4 +1,4 @@
-// File: src/main/java/ma/mundiapolis/tp3_gere_patient/entities/Patient.java
+// File: src/main/java/ma/mundiapolis/tp3_gere_patient/services/PatientService.java
 package ma.mundiapolis.tp3_gere_patient.services;
 
 import ma.mundiapolis.tp3_gere_patient.entities.Patient;
@@ -12,17 +12,24 @@ import java.util.Optional;
 
 @Service
 public class PatientService {
-    @Autowired
-    private PatientRepository patientRepository;
-    public Patient savePatient(Patient patient){
+    private final PatientRepository patientRepository;
+
+    public PatientService(PatientRepository patientRepository) {
+        this.patientRepository = patientRepository;
+    }
+
+    public Patient savePatient(Patient patient) {
         return patientRepository.save(patient);
     }
-    public Page<Patient> getAllPatients(String word, int page, int size){
-        return patientRepository.findByNameContains(word, PageRequest.of(page,size));
+
+    public Page<Patient> getAllPatients(String word, int page, int size) {
+        return patientRepository.findByNameContains(word, PageRequest.of(page, size));
     }
-    public Optional<Patient>getPatientById(Long id){
+
+    public Optional<Patient> getPatientById(Long id) {
         return patientRepository.findById(id);
     }
+
     public void deletePatient(Long id) {
         patientRepository.deleteById(id);
     }

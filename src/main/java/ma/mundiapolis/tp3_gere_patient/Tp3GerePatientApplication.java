@@ -20,9 +20,9 @@ public class Tp3GerePatientApplication {
     @Bean
     CommandLineRunner commandLineRunner(PatientRepository patientRepository){
         return args -> {
-            patientRepository.save(new Patient(null, "Mohamed",new Date(), "Mohamed@@gmail.com", true, 50 ));
-            patientRepository.save(new Patient(null, "Yassine",new Date(), "Yassine@@gmail.com", true, 50 ));
-            patientRepository.save(new Patient(null, "Omar",new Date(), "Omar@@gmail.com", true, 50 ));
+            patientRepository.save(new Patient(null, "Mohamed", new Date(), "mohamed@example.com", true, 50 ));
+            patientRepository.save(new Patient(null, "Yassine", new Date(), "yassine@example.com", true, 50 ));
+            patientRepository.save(new Patient(null, "Omar", new Date(), "omar@example.com", true, 50 ));
         };
     }
 
