@@ -73,4 +73,3 @@ The application includes the following functionalities:
 - [Spring Data JPA Documentation](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
 
 This updated README.md reflects the requirements of the assignment, including patient management features, technologies used, and setup instructions. Make sure to replace placeholders like YOUR_DB_USERNAME and YOUR_DB_PASSWORD with actual database credentials before using the application.
-```
